@@ -1,3 +1,44 @@
+const Toast = Swal.mixin({
+  showClass: {
+    popup: `
+                      animate__animated
+                      animate__fadeInDown
+                      animate__faster
+                    `
+  },
+  hideClass: {
+    popup: `
+                      animate__animated
+                      animate__fadeOutRight
+                      animate__faster
+                    `
+  },
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  }
+});
+
+function showMessage(msg,icon){
+  Swal.fire({
+    title: msg,
+    icon: icon
+  })
+}
+function showToast(msg){
+  Toast.fire({
+    title: msg,
+    icon: 'success',
+    /*didClose: () => {
+      console.log('✅ Toast بسته شد');
+    }*/
+  });
+}
 const users = [
   {
     id: 1,
