@@ -24,10 +24,10 @@ const Toast = Swal.mixin({
   }
 });
 
-function showMessage(msg,icon){
+function showErrorMessage(msg){
   Swal.fire({
     title: msg,
-    icon: icon
+    icon: 'error'
   })
 }
 function showToast(msg){
@@ -76,5 +76,21 @@ const users = [
     email: "babak@gmail.com",
   },
 ];
-
-export default users;
+function resetInputs(username, password, rememberMe){
+  username.value = ''
+  password.value = ''
+  rememberMe.checked = false
+}
+function isExistUsername(username){
+  return users.some(user => {
+    return user.username === username
+  })
+}
+function isExistPassword(password){
+  return users.some(user => {
+    return user.password === password
+  })
+}
+export {
+  users,showToast,showErrorMessage,resetInputs,isExistUsername,isExistPassword
+}
