@@ -4,7 +4,17 @@ const rememberMeInput = document.querySelector('#remember-me')
 const loginBtn = document.querySelector('.login-button')
 document.addEventListener('DOMContentLoaded', () => {
     resetInputs(usernameInput, passwordInput, rememberMeInput)
-    CookieManager.set('id', '1', 2)
+    let userId = CookieManager.get('id')
+    console.log(userId)
+    console.log(typeof userId)
+    if (userId){
+        userId = Number(userId)
+        const selectUser = users.find(user => {
+            return user.id === userId
+        })
+        usernameInput.value = selectUser.username
+        passwordInput.value = selectUser.password
+    }
 })
 loginBtn.addEventListener('click', event => {
     event.preventDefault()
