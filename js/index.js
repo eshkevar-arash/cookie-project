@@ -4,6 +4,7 @@ const rememberMeInput = document.querySelector('#remember-me')
 const loginBtn = document.querySelector('.login-button')
 document.addEventListener('DOMContentLoaded', () => {
     resetInputs(usernameInput, passwordInput, rememberMeInput)
+    CookieManager.set('id', '1', 2)
 })
 loginBtn.addEventListener('click', event => {
     event.preventDefault()
@@ -25,7 +26,7 @@ loginBtn.addEventListener('click', event => {
             }else {
                 CookieManager.set('id',userData.id, 0)
             }
-            window.location.href = '../courses.html'
+            window.location.href = 'courses.html'
         }
     }
 })
